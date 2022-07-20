@@ -1,0 +1,17 @@
+<html>
+    <body>
+        <p id="count">0</p>
+        <script>
+            var func = function (path) {
+                fetch('https://ya7d9lxe41.execute-api.us-east-1.amazonaws.com/dev/' + path)
+                    .then(response => response.json())
+                    .then(json => {
+                        var data = JSON.stringify(json)
+                        if (!data.includes("final")) func('1')
+                        document.getElementById("count").innerHTML = data
+                    });
+            }
+            func('0')
+        </script>
+    </body>
+</html>
